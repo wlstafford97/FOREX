@@ -1,0 +1,2 @@
+# FOREX
+Forex journal
