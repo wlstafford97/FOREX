@@ -27,8 +27,13 @@ namespace ForexJournal
                 $"{textBox4.Text}, {textBox5.Text}, {textBox6.Text}, {textBox7.Text}, {textBox8.Text}, {textBox9.Text}, {textBox10.Text}\n");
             if(MessageBox.Show("Entry successfully submitted. Do you have another entry?", "Message Box", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                textBox1.Clear();
-
+                foreach (TextBox textBox in Controls.OfType<TextBox>())
+                {
+                    textBox.Text = "";
+                }
+            } else
+            {
+                this.Close();
             }
         }
     }
