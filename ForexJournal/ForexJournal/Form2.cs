@@ -14,7 +14,7 @@ namespace ForexJournal
         {
             InitializeComponent();
             List<Trades> trades;
-            using (var reader = new StreamReader(@"C:\Users\Lucas\Downloads\tradelog.csv"))
+            using (var reader = new StreamReader(@".\CSV\tradelog.csv"))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 trades = csv.GetRecords<Trades>().ToList();

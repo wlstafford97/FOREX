@@ -148,7 +148,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "MM/dd/yyyy";
+            this.dateTimePicker1.CustomFormat = "ddd/MM/dd/yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(95, 30);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -160,7 +160,8 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "SELL",
-            "BUY"});
+            "BUY",
+            "DEPOSIT"});
             this.comboBox1.Location = new System.Drawing.Point(95, 109);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 21);

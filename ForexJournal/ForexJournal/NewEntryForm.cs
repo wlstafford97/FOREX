@@ -33,28 +33,43 @@ namespace ForexJournal
             }
             if (comboBox1.SelectedItem.Equals("SELL"))
             {
-                profitLoss = entryP - exitP;
-                pips = profitLoss / (double.Parse(comboBox2.SelectedItem.ToString())*10);
+                profitLoss = Math.Round(((entryP - exitP) * (double.Parse(comboBox2.SelectedItem.ToString()) * 100)), 2);
+                if (comboBox2.SelectedItem.ToString().Equals("0.10")){
+                    pips = Math.Round((profitLoss / (double.Parse(comboBox2.SelectedItem.ToString()) * 100)), 2);
+                } else
+                {
+                    pips = Math.Round((profitLoss / (double.Parse(comboBox2.SelectedItem.ToString()) * 10)), 2);
+                }
                 nAccTtl = accTtl + profitLoss;
             }
-            else
+            else if (comboBox1.SelectedItem.Equals("BUY"))
             {
-                profitLoss = entryP + exitP;
-                pips = profitLoss / (double.Parse(comboBox2.SelectedItem.ToString()) * 10)
+                profitLoss = Math.Round(((exitP-entryP) * (double.Parse(comboBox2.SelectedItem.ToString()) * 100)), 2);
+                if (comboBox2.SelectedItem.ToString().Equals("0.10")){
+                    pips = Math.Round((profitLoss / (double.Parse(comboBox2.SelectedItem.ToString()) * 100)), 2);
+                }
+                else
+                {
+                    pips = Math.Round((profitLoss / (double.Parse(comboBox2.SelectedItem.ToString()) * 10)), 2);
+                }
                 nAccTtl = accTtl + profitLoss;
+            } else
+            {
+                profitLoss = 0;
+                pips = 0;
+                nAccTtl = entryP + accTtl;
             }
-            File.AppendAllText(@".\CSV\tradelog.csv", $"{dateTimePicker1.Text},{textBox2.Text},{textBox3.Text}," +
-                $"{comboBox1.Text},{comboBox2.Text},{textBox6.Text},{textBox7.Text},{profitLoss.ToString()},{pips.ToString()},{nAccTtl.ToString()}\n");
 
-            if(MessageBox.Show("Entry successfully submitted. Do you have another entry?", "Message Box", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if(MessageBox.Show("Profit/Loss: " + profitLoss.ToString() + "  Is this correct?", "Message Box", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                File.AppendAllText(@".\CSV\tradelog.csv", $"{dateTimePicker1.Text},{textBox2.Text},{textBox3.Text}," +
+                $"{comboBox1.Text},{comboBox2.Text},{textBox6.Text},{textBox7.Text},{profitLoss.ToString()},{pips.ToString()},{nAccTtl.ToString()}\n");
                 foreach (TextBox textBox in Controls.OfType<TextBox>())
                 {
                     textBox.Text = "";
                 }
             } else
             {
-                this.Close();
             }
         }
     }
