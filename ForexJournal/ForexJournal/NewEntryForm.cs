@@ -23,12 +23,14 @@ namespace ForexJournal
             double pips;
             string lastLine = File.ReadLines(@".\CSV\tradelog.csv").Last();
             string[] lLArray = lastLine.Split(',');
-            double accTtl = double.Parse(lLArray[9]);
+            double accTtl = double.Parse(lLArray[10]);
             double entryP = double.Parse(textBox6.Text);
             double exitP = double.Parse(textBox7.Text);
+            int tradeCount = int.Parse(lLArray[0]);
             using (var reader = new StreamReader(@"C:.\CSV\tradelog.csv"))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
+                csv.Configuration.MissingFieldFound = null;
                 trades = csv.GetRecords<Trades>().ToList();
             }
             if (comboBox1.SelectedItem.Equals("SELL"))
@@ -62,7 +64,7 @@ namespace ForexJournal
 
             if(MessageBox.Show("Profit/Loss: " + profitLoss.ToString() + "  Is this correct?", "Message Box", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                File.AppendAllText(@".\CSV\tradelog.csv", $"{dateTimePicker1.Text},{textBox2.Text},{textBox3.Text}," +
+                File.AppendAllText(@".\CSV\tradelog.csv", $"{tradeCount + 1},{dateTimePicker1.Text},{timePicker1.Text},{timePicker2.Text}," +
                 $"{comboBox1.Text},{comboBox2.Text},{textBox6.Text},{textBox7.Text},{profitLoss.ToString()},{pips.ToString()},{nAccTtl.ToString()}\n");
                 foreach (TextBox textBox in Controls.OfType<TextBox>())
                 {

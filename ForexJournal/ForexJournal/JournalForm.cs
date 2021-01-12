@@ -10,29 +10,24 @@ using System.Windows.Forms;
 
 namespace ForexJournal
 {
-    public partial class Form1 : Form
+    public partial class JournalForm : Form
     {
-        public Form1()
+        public JournalForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        { 
-            Form3 form3 = new Form3();
-            form3.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void tradeLogBtn_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
+            TradeLogForm form2 = new TradeLogForm();
             form2.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void newEntryBtn_Click(object sender, EventArgs e)
         {
             NewEntryForm entryForm = new NewEntryForm();
             entryForm.Show();
         }
+
     }
 }

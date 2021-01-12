@@ -8,6 +8,7 @@ namespace ForexJournal
 {
     public class Trades
     {
+        public string trade { get; set; }
         public string date { get; set; }
         public string entryTime { get; set; }
         public string exitTime { get; set; }

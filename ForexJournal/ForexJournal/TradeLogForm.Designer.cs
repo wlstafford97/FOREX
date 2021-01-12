@@ -1,6 +1,6 @@
 ﻿namespace ForexJournal
 {
-    partial class Form2
+    partial class TradeLogForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tradesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entryTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exitTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +51,7 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tradeDataGridViewTextBoxColumn,
             this.dateDataGridViewTextBoxColumn,
             this.entryTimeDataGridViewTextBoxColumn,
             this.exitTimeDataGridViewTextBoxColumn,
@@ -63,12 +65,18 @@
             this.dataGridView1.DataSource = this.tradesBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1046, 400);
+            this.dataGridView1.Size = new System.Drawing.Size(1146, 436);
             this.dataGridView1.TabIndex = 0;
             // 
             // tradesBindingSource
             // 
             this.tradesBindingSource.DataSource = typeof(ForexJournal.Trades);
+            // 
+            // tradeDataGridViewTextBoxColumn
+            // 
+            this.tradeDataGridViewTextBoxColumn.DataPropertyName = "trade";
+            this.tradeDataGridViewTextBoxColumn.HeaderText = "trade";
+            this.tradeDataGridViewTextBoxColumn.Name = "tradeDataGridViewTextBoxColumn";
             // 
             // dateDataGridViewTextBoxColumn
             // 
@@ -130,14 +138,14 @@
             this.accountTotalDataGridViewTextBoxColumn.HeaderText = "accountTotal";
             this.accountTotalDataGridViewTextBoxColumn.Name = "accountTotalDataGridViewTextBoxColumn";
             // 
-            // Form2
+            // TradeLogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 450);
+            this.ClientSize = new System.Drawing.Size(1169, 461);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "TradeLogForm";
+            this.Text = "Tradelog";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tradesBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -147,6 +155,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tradeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn entryTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn exitTimeDataGridViewTextBoxColumn;
